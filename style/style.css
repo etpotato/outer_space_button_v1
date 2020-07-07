@@ -1,8 +1,8 @@
 :root {
   --angle: 0;
-  --hue: 160;
-  --rotate: 120;
-  --hue-bg: calc(var(--hue) + 90);
+  --hue: 315;
+  --rotate: 100;
+  --hue-bg: calc(var(--hue) + 140);
 }
 
 *,
