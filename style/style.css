@@ -1,0 +1,71 @@
+:root {
+  --angle: 0;
+  --hue: 160;
+  --rotate: 120;
+  --hue-bg: calc(var(--hue) + 90);
+}
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+body {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  font-family: 'VT323', monospace;
+  font-size: 14vh;
+  background-image: 
+    repeating-linear-gradient(
+      var(--angle),
+      hsl(var(--hue-bg), 100%, 50%), 
+      hsl(var(--hue-bg), 100%, 50%) 5vh, 
+      hsl(calc(var(--hue-bg) + var(--rotate)), 100%, 50%) 5vh, 
+      hsl(calc(var(--hue-bg) + var(--rotate)), 100%, 50%) 10vh
+  );
+}
+
+.container {
+  
+}
+
+button {
+  width: 40vh;
+  height: 40vh;
+  font-weight: bold;
+  color: hsl(var(--hue), 100%, 50%);
+  background-color: hsl(calc(var(--hue) + var(--rotate)), 100%, 50%);
+  border-style: solid;
+  border-width: 5vh;
+  border-color: hsl(var(--hue), 100%, 50%);
+  border-radius: 30%;
+  outline: none;
+  box-shadow: 0 0 1.5vh #888888;
+  transition-property: all;
+  transition-duration: 0.3s;
+}
+
+button:focus,
+button:hover {
+  border-radius: 50%;
+}
+
+button:active {
+  color: hsl(var(--hue), 100%, 60%);
+  background-color: hsl(calc(var(--hue) + var(--rotate)), 100%, 60%);
+  border-color: hsl(var(--hue), 100%, 60%);
+  box-shadow: 0 0 0.3vh #666666;
+  transform: scale(0.98);
+}
+.visually-hidden {
+  position: absolute;
+  height: 1px; 
+  width: 1px;
+  overflow: hidden;
+  clip: rect(1px 1px 1px 1px);
+  clip: rect(1px, 1px, 1px, 1px);
+  white-space: nowrap
+}
