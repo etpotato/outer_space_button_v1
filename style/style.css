@@ -75,7 +75,9 @@
   left: 3vw;
   bottom: 2vw;
   width: 10vw;
+  max-width: 50px;
   height: 10vw;
+  max-height: 50px;
   border: none;
   background-color: transparent;
   outline: none;
