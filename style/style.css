@@ -11,11 +11,23 @@
   box-sizing: border-box;
 }
 
-body {
+.visually-hidden {
+  position: absolute;
+  height: 1px; 
+  width: 1px;
+  overflow: hidden;
+  clip: rect(1px 1px 1px 1px);
+  clip: rect(1px, 1px, 1px, 1px);
+  white-space: nowrap
+}
+
+.page {
+  position: relative;
   display: flex;
   justify-content: center;
   align-items: center;
   height: 100vh;
+  overflow: hidden;
   font-family: 'VT323', monospace;
   font-size: 14vh;
   background-image: 
@@ -28,7 +40,7 @@ body {
   );
 }
 
-button {
+.page__play {
   width: 40vh;
   height: 40vh;
   font-weight: bold;
@@ -42,26 +54,69 @@ button {
   box-shadow: 0 0 1.5vh #888888;
   transition-property: all;
   transition-duration: 0.1s;
+  touch-action: none;
 }
 
-button:focus,
-button:hover {
+.page__play:focus,
+.page__play:hover {
   border-radius: 50%;
 }
 
-button:active {
+.page__play:active {
   color: hsl(var(--hue), 100%, 60%);
   background-color: hsl(calc(var(--hue) + var(--rotate)), 100%, 60%);
   border-color: hsl(var(--hue), 100%, 60%);
   box-shadow: 0 0 0.3vh #666666;
   transform: scale(0.98);
 }
-.visually-hidden {
+
+.page__volume {
   position: absolute;
-  height: 1px; 
-  width: 1px;
-  overflow: hidden;
-  clip: rect(1px 1px 1px 1px);
-  clip: rect(1px, 1px, 1px, 1px);
-  white-space: nowrap
+  left: 3vw;
+  bottom: 2vw;
+  width: 10vw;
+  height: 10vw;
+  border: none;
+  background-color: transparent;
+  outline: none;
+  opacity: 0.8;
+}
+
+.page__volume::before,
+.page__volume::after {
+  content: '';
+  position: absolute;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  background-repeat: no-repeat;
+  background-size: 100%;
+  background-position: center;
+}
+
+.page__volume::before {
+  background-image: url('../img/icon-loud.svg');
+}
+
+.page__volume::after {
+  background-image: url('../img/icon-mute.svg');
+  opacity: 0;
+}
+
+.page__volume--mute::before {
+  opacity: 0;
+}
+
+.page__volume--mute::after {
+  opacity: 1;
+}
+
+.page__volume:active {
+  opacity: 1;
+}
+
+.page__volume:focus-visible {
+  outline: auto;
+  outline-offset: 4px;
 }
