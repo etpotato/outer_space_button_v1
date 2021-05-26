@@ -10,15 +10,15 @@
     <title>Outer space button</title>
   </head>
   <body class="page">
-    <button class="page__play" type="button">PUSH
+    <button class="page__play" type="button" role="switch" aria-checked="false">PUSH
       <span class="visually-hidden">Change colors, play music</span>
     </button>
     <audio class="page__audio" preload="auto" loop>
       <source src="files/song.mp3" type="audio/mpeg">
       <source src="files/song.ogg" type="audio/ogg">
     </audio>
-    <button class="page__volume" type="button">
-      <span class="visually-hidden">Mute/unmute</span>
+    <button class="page__volume" type="button" role="switch" aria-checked="false">
+      <span class="visually-hidden">Mute</span>
     </button>
     <script src="script/main.js"></script>
   </body>
