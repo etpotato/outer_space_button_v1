@@ -23,9 +23,6 @@
 
 .page {
   position: relative;
-  display: flex;
-  justify-content: center;
-  align-items: center;
   height: 100vh;
   overflow: hidden;
   font-family: 'VT323', monospace;
@@ -41,6 +38,10 @@
 }
 
 .page__play {
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%) scale(1);
   width: 40vh;
   height: 40vh;
   font-weight: bold;
@@ -68,7 +69,7 @@
   background-color: hsl(calc(var(--hue) + var(--rotate)), 100%, 60%);
   border-color: hsl(var(--hue), 100%, 60%);
   box-shadow: 0 0 0.3vh #666666;
-  transform: scale(0.98);
+  transform: translate(-50%, -50%) scale(0.98);
 }
 
 .page__volume {
