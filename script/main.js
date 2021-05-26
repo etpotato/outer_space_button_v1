@@ -10,7 +10,7 @@ let gainKnob = null;
 const onPlayAudio = (evt) => {
   evt.preventDefault();
   const isMuted = volumeButton.getAttribute('aria-checked') === 'true';
-  audioContext = new AudioContext();
+  audioContext = window.AudioContext || window.webkitAudioContext;
   track = audioContext.createMediaElementSource(audio);
   gainKnob = audioContext.createGain();
 
