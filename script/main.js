@@ -10,7 +10,15 @@ let gainKnob = null;
 const onPlayAudio = (evt) => {
   evt.preventDefault();
   const isMuted = volumeButton.getAttribute('aria-checked') === 'true';
-  audioContext = window.AudioContext || window.webkitAudioContext;
+
+  if (window.AudioContext) {
+    audioContext = new window.AudioContext();
+  } else if (window.webkitAudioContext) {
+    audioContext = new window.webkitAudioContext();
+  } else {
+    return;
+  }
+
   track = audioContext.createMediaElementSource(audio);
   gainKnob = audioContext.createGain();
 
@@ -25,7 +33,7 @@ const onPlayAudio = (evt) => {
 const onPlayButtonClick = (evt) => {
   evt.preventDefault();
   const random = Math.random() * 360;
-  root.style.setProperty('--hue', random); 
+  root.style.setProperty('--hue', random);
   root.style.setProperty('--angle', `${random}turn`);
 };
 
@@ -33,11 +41,11 @@ const onVolumeButtonClick = (evt) => {
   evt.preventDefault();
 
   if (gainKnob) {
-    evt.target.matches('.page__volume--mute') 
-    ? gainKnob.gain.value = 1 
+    evt.target.matches('.page__volume--mute')
+    ? gainKnob.gain.value = 1
     : gainKnob.gain.value = 0;
   }
-  
+
   const isChecked = volumeButton.getAttribute('aria-checked') === 'true';
   volumeButton.setAttribute('aria-checked', !isChecked)
   volumeButton.classList.toggle('page__volume--mute');
